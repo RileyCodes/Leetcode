@@ -27,7 +27,7 @@ class Solution(object):
             mask = 0
             for c in set(w):
                 
-                # we push 1 to the right by the index of chatacter in alphabet( a = 0, b = 1)
+                # we push 1 to the left by the index of chatacter in alphabet( a = 0, b = 1)
                 # and we use |= to keep the previous states
                 # for example, a will have a mask of 1, ac will have a mask of 101
                 # in this way, we got a mask that represents whether a unique character was used in word
