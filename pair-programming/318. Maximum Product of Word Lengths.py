@@ -20,7 +20,7 @@ class Solution(object):
                     result = max(result, len(words[i]) * len(words[j]))
         return result
   
-    #approach2 using binwise operation
+    #approach2 using bitwise operation
     def maxProduct(self, words):
         d = {}
         for w in words:
