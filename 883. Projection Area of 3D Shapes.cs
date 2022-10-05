@@ -11,3 +11,4 @@ public class Solution {
         return topCount + Side1Count + Side2Count;
     }
 }
+
