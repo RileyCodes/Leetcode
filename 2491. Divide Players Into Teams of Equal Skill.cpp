@@ -23,6 +23,7 @@ public:
 
     int lP = 0, rP = skill.size() - 1;
     vector<pair<int,int>> teams;
+    long long chem = 0;
     while(lP < rP)
     {
         if(teamSkills > 0)
@@ -33,24 +34,12 @@ public:
         else
             teamSkills = skill[lP] + skill[rP];
 
-        teams.emplace_back(pair<int,int>(skill[lP],skill[rP]));
+        // Calculate the chemistry of the current team
+        chem += skill[lP] * skill[rP];
+
         ++lP;
         --rP;
     }
-
-/*
-The chemistry of a team is equal to the product of the skills of the players on that team.
-
-Return the sum of the chemistry of all the teams, or return -1 if there is no way to divide the players into teams such that the total skill of each team is equal
-*/
-    long long sum = 0;
-    for(auto team : teams)
-    {
-        auto che = team.first * team.second;
-        sum += che;
-    }
-
-    //dummy return for now.
-    return sum;
+        return chem;
     }
 };
