@@ -2,28 +2,28 @@ class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
 
-        auto Compare = [](ListNode** a, ListNode** b){
-            return (*a)->val > (*b)-> val;
+        auto Compare = [](const auto& a, const auto& b){
+            return a->val > b-> val;
         };
 
-        priority_queue<ListNode**, vector<ListNode**>, decltype(Compare)> q(Compare);
+        priority_queue<ListNode*, vector<ListNode*>, decltype(Compare)> q(Compare);
         ListNode dummy(0);
         ListNode* cur = &dummy;
 
         for(auto&& node : lists)
         {
             if(node != nullptr)
-                q.push(&node);
+                q.push(node);
         }
 
         while(!q.empty())
         {
-            cur->next = (*q.top());
+            cur->next = q.top();
 
-            auto** nextInSameList = q.top();
+            auto nextInSameList = q.top();
             q.pop();
-            (*nextInSameList) = (*nextInSameList)->next;
-            if((*nextInSameList) != nullptr)
+            nextInSameList = nextInSameList->next;
+            if(nextInSameList != nullptr)
                 q.push(nextInSameList);
             cur = cur->next;
         }
